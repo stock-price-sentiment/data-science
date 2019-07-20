@@ -8,7 +8,7 @@ TWITTER_AUTH.set_access_token(config('TWITTER_ACCESS_TOKEN'),
 TWITTER = tweepy.API(TWITTER_AUTH)
 
 def search_tweets(keyword):
-    return [status.text for status in tweepy.Cursor(TWITTER.search, q=str(keyword)).items(200)]
+    return [status.text for status in tweepy.Cursor(TWITTER.search, q=str(keyword)).items(200) if status.text.count('$') <= 2 ]
 
 
 ticker = input("What ticker?")
