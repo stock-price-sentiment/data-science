@@ -6,7 +6,7 @@ import re
 
 search = 'facebook'
 
-def forbes_scraper(search)
+def forbes_scraper(search):
     source = urlopen('https://www.forbes.com/search/?q=' + search)
     soup = BeautifulSoup(source,'lxml')
 
