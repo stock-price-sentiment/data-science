@@ -1,5 +1,8 @@
 import tweepy
 from decouple import config
+from sentiment import sentiment_analyzer_scores
+from nltk.sentiment.vader import SentimentIntensityAnalyzer
+
 
 TWITTER_AUTH = tweepy.OAuthHandler(config('TWITTER_CONSUMER_KEY'),
                                    config('TWITTER_CONSUMER_SECRET'))
@@ -13,6 +16,9 @@ def search_tweets(keyword):
 
 ticker = input("What ticker?")
 
-tweets = search_tweets(ticker)
+analyzer = SentimentIntensityAnalyzer()
 
-print(tweets)
+
+tweets = search_tweets(ticker)
+for tweet in tweets:
+    sentiment_analyzer_scores(tweet)
