@@ -4,8 +4,6 @@ import pandas as pd
 import re
 
 
-search = 'facebook'
-
 def forbes_scraper(search):
     source = urlopen('https://www.forbes.com/search/?q=' + search)
     soup = BeautifulSoup(source,'lxml')
@@ -48,5 +46,6 @@ def forbes_scraper(search):
         final_text_list.append(text)
     return final_text_list
 
+search = input('What would you like to search Forbes for?')
 
 forbes_scraper(search)
