@@ -2,6 +2,7 @@ from urllib.request import urlopen
 from bs4 import BeautifulSoup
 import pandas as pd
 import re
+from sentiment import sentiment_analyzer_scores
 
 
 def forbes_scraper(search):
@@ -48,4 +49,8 @@ def forbes_scraper(search):
 
 search = input('What would you like to search Forbes for?')
 
-forbes_scraper(search)
+
+fb = forbes_scraper(search)
+
+for article in fb:
+    sentiment_analyzer_scores(article)
